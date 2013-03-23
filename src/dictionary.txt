@@ -1,0 +1,290 @@
+assume                  предполагать
+profound		глубокий
+insight			понимание
+arcane			тайный
+investigate		расследовать
+tantalize		мучать
+crucial			решающий, ключевой
+possess			обладать
+spatial			пространственный
+corroboration		подтверждение
+recite			декламировать, читать вслух
+capacity		способность, мощность, емкость
+leap			прыгать
+fluidity		текучесть
+agreed upon		согласованный
+trait			черта
+persistence		настойчивость
+yet surely		но несомненно
+jumble			беспорядок
+recuperate		выздоравливать
+rays			лучи
+quadrilateral		четырехугольник
+trapezoid		трапеция
+right angle		прямой угол
+regular polyhedron	правильный многогранник
+antiquity		древность
+tetrahedron		тетраэдр
+octahedron		октаэдр
+icosahedron		икосаэдр
+cube or hexahedron	куб или гексаэдр
+dodecahedron		додекаэдр
+simillar figures	подобные фигуры
+ruler-compass constr.	построение циркулем и линейкой
+indirectly		неявно
+volume			объем
+are to each other as	относятся друг к другу
+corresponding		соответствующий
+raise to a power	возвести в степень
+extract a root		извлечь корень
+addition		сложение
+subtraction		вычитание
+multiplication		умножение
+division		деление
+calculus		матан
+treating problems	решение(процесс) задач
+branch			раздел
+magnitude		величина
+restricted to		ограничен на
+fraction		дробь
+common or simply	обыкновенная или простая
+numerator		числитель
+denominator		знаменатель
+construction		построение
+properties		свойства
+drawing			чертеж
+precise			точный			
+accurate		точный
+exact			точный
+conic sections		конические сечения
+face			грань
+concept			понятие
+appreciate		ценить
+contribution		вклад
+concise			сжатый, краткий (о стиле письма)
+broad sense		(в) широком смысле
+obtain			получать, приобретать
+rely upon (on)		полагаться
+rigorous		строгий
+foremost		прежде всего
+essential		основной, незаменимый
+peculiar		специфический, особенный
+colloquial		разговорный (о языке)
+ambiguous		нечеткий, неясный, многозначный
+reliable		надежный
+devise			придумывать, изобретать
+prominent		выдающийся (о людях)
+encompass		охватывать
+ascribe			приписывать
+diversity		многообразие (не термин)
+(in)proper		(не) должным образом
+arithmetic		арифметический (окончание)
+utilize			использовать
+by no/all means		(ни в коем)/(во всяком) случае
+consistant		убедительный, логичный
+in terms of		в терминах (на языке)
+probability		вероятность
+necessary		необходимо
+sufficient		достаточно
+latter			последний (из упомнятых)
+former			первый (из упомянутых)
+circumference		длина окружности
+obtuse			тупой (угол)
+acute			острый (угол)
+carry out		выполнить
+accomplish		выполнить
+perform			выполнить
+implement		реализовать
+polyline		ломаная
+sack			мешок
+tumble			опрокидывать
+pry up			поднимать при помощи рычага
+jack			домкрат
+matter			вещество, материя
+preventing		предотвращающий
+particularly		особым образомun
+undesired		нежеланный
+downward		опускающийся
+tend			стремиться (иметь тенденцию)
+arch			арка, дуга
+wedge			клин
+brace			скреплять, связывать (при помощи балок)
+buttress		подпорка
+concrete		бетон
+latticework		решетчатая конструкция
+lattice			решетка
+truss			связка
+axle			ось
+flotation		плавучесть
+frequently		часто
+consider		рассмотреть
+provide			обеспечивать
+confuse			путать
+
+/* here begins dictionary for file "section_1.pdf" */
+
+set			множество
+subset			подмножество
+union			объединение
+intersection		пересечение
+difference		разность (только для множеств)
+domain			область определения
+unifying		объединенный
+framework		структура
+this enables us		это позволяет нам
+margin			поля (об учебнике или о тетради)
+even			четный
+odd			нечетный
+arbitrary		произвольный
+curly brackets		фигурные скобки
+singleton		множество из одного элемента
+ellipsis		три точки в перечислении
+clarifying		проясняющий
+inequality		неравенство
+solution set		множество решений
+slope			наклон
+circle			окружность
+broken line		пунктирная линия
+half-plane		полуплоскость
+disc			круг
+contained in		содержится в
+contains		содержит
+criteria		критерий
+proper subset		несобственное подмножество
+finite set		конечное множество
+
+/* And here it ends */
+
+credit			честь, заслуга
+prior			прежний, предшествующий
+adoption		принятие
+widespread		широко распространенный
+gradually		постепенно
+superior		лучший, более совершенный
+eventually		в конечном счете
+extent			размер, величина, мера
+supply			восполнять (запасы)
+exaggeration		преувеличение (отр.)
+perhaps			наверное
+capture			поимка
+oxen			бык (вол) (? рогатый скот)
+mace			жезл
+crude			сырой
+hieroglyphics		иероглифы
+clumsy			неуклюжий
+doubt			сомнение
+worthwhile		стоящий
+uniform			равномерный
+compelled		вынужденный, подчиненый
+impressed		приложенная (о силе)
+concerned		воволеченный, заинтересованный
+particles		частицы
+therefore		по этой причине
+rate			скорость, интенсивность, уровень
+acceleration		ускорение
+upset			нарушение, расстройство
+striking		поразительный, замечательный
+rung			ступенька (стремянки)
+jet			струя
+propulsion		проталкивание вперед
+
+stick to the subject	вернуться к теме (вернее, оставаться)
+wound up		вспылить
+stood up to bully	перечить хулигану
+pervert			извращать (в сексуальном плане)
+put up with		мириться
+throw up		блевать
+shop class		уроки труда
+impersonation		перевоплощение
+belt sander		шлифовальный станок
+mutton-chop		баранья отбивная
+sideburns		бакенбарды
+corpulent		тучный
+jaundice		желтуха
+disgraceful		позорный
+creep			содрогание (от ужаса)
+ounce			унция
+cavity			дыра в зубе
+floss			пользоваться зубной нитью
+wave			помахать (рукой)
+pumpkin			тыква
+mold			форма
+fuss			суетиться
+affirmation		подтверждение
+stern			непреклонный
+sob			плаксивый
+bleachers		дешевые места для зрителей
+stoned			под кайфом ~dazed
+muffled			приглушенный
+distracted		рассеянный (отсеянный)
+self-esteem		чувство собственного достоинства
+exaggeration		преувеличение
+complain		жаловаться
+fascinated		очарованный
+so-and-so		такой-то
+knock up		обрюхатить
+stubborn		упрямый
+bladder			мочевой пузырь
+twisted in bladder	когда в туалет хочется
+coax			уговаривать
+curse			проклинать
+pass out		вырубиться
+deep down		в глубине душе
+loaded			надравшийся
+mill			мельница
+pissed			пьяный
+aisle			проход к алтарю
+palm			ладонь
+whenever		когда бы не
+slacks			широкие брюки
+rug			кушетка
+pour			налить (наполнить)
+pillowcase		наволочка
+ribbon			лента
+tuck			подоткнуть
+butts			окурки
+pew			скамья в церкви
+porch			крыльцо
+gross			грязный, грубый (например, о шутке)
+thrift store		благотворительный магазин
+sled			сани
+slums			трущобы
+groan			стонать
+bratty			своевольный
+luminaria		светильник
+wink			моргать
+regardless		несмотря на
+sorority		университетское сестринство
+fraternity		университетское братство
+denounce		осуждать
+hazing			дедовщина
+deafening		оглушительный
+squawk			пронзительно кричать
+crust			корка
+calf			теленок
+auspicious		благоприятный
+hip			бедро
+bruise			синяк
+spun			измученный (в смысле видавший виды)
+moleste			приставать (в плане к детям)
+morbid			ненормальный (о вещи в псих. плане)
+
+a peace of smth		конкретно о uncountable
+account for		объснить, давать отчет
+to be credited with	считается что (о хорошем)
+prior to		синоним before
+as far as i concerned	что касается меня
+under the law		согласно закону
+to take into account	принимать во внимание
+bootstraps		ушки кроссовок
+
+designate		обозначать
+hypotenuse		гипотенуза
+legs			катеты
+friction		трение
+evenness		гладкость
+bearing			подшипник (опора)
+reduce			понижать, уменьшать
+advancing		продвижение вперед
+transmit		передавать
+pulley			блок
