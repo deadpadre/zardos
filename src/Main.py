@@ -13,6 +13,7 @@ import ConsoleArguments.ConsoleArguments as CLArgs
 import GUI.GUI as GUI
 import Files.Files as Files
 import Strings.Strings as Strings
+import Core.Core as Core
 
 class Question:
     def __init__(self, d, k, mode):
