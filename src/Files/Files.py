@@ -11,7 +11,7 @@ def isAlpha(c):
         return False
 
 def makeDictionary(srcfile):
-    sfile = open('dictionary.txt', 'r');
+    sfile = open(srcfile, 'r');
     lines = sfile.readlines()
     sfile.close();
     
