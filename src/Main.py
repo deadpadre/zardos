@@ -12,13 +12,14 @@ import sys
 import ConsoleArguments.ConsoleArguments as CLArgs
 import GUI.GUI as GUI
 import Files.Files as Files
+import Strings.Strings as Strings
 
 class Question:
     def __init__(self, d, k, mode):
         self.q = d[k][mode]
         self.a = d[k][(mode + 1) % 2]
     def check(self, a):
-        print 'Правильный ответ - %s' % self.a
+        print Strings.ranswer + '%s' % self.a
         print '\n'
     def ask(self):
         print self.q
