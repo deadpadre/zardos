@@ -6,41 +6,30 @@ Created on 08.03.2013
 @author: deadpadre
 '''
 
-from random import randint
-from PyQt4 import QtCore, QtGui
+from PyQt4 import QtGui
 import sys
 import ConsoleArguments.ConsoleArguments as CLArgs
 import GUI.GUI as GUI
-import Files.Files as Files
-import Strings.Strings as Strings
+#import Strings.Strings as Strings
 import Core.Core as Core
 
-class Question:
-    def __init__(self, d, k, mode):
-        self.q = d[k][mode]
-        self.a = d[k][(mode + 1) % 2]
-    def check(self, a):
-        print Strings.ranswer + '%s' % self.a
-        print '\n'
-    def ask(self):
-        print self.q
-        self.check(raw_input());
+def terminalProgram():
+    quiz = Core.Quiz('dictionary.txt')
+    while (quiz.hasQuestions()):
+        currentQuestion = quiz.askQuestion()
+        print currentQuestion.ask()
+        print currentQuestion.check(raw_input())
 
-def main():
-    dictionary = Files.makeDictionary('dictionary.txt')
-    targs       = CLArgs.getArgs()
-    number      = targs['questions']
-    for i in xrange(number):
-        temp = Question(dictionary, randint(0, len(dictionary) - 1), randint(0, 1))
-        temp.ask()
+def windowProgram():
+    app         = QtGui.QApplication(sys.argv)
+    window      = GUI.QuizWindow()
+    window.move((app.desktop()).availableGeometry(window).center() - window.rect().center())
+    window.show()
+    sys.exit(app.exec_())
 
 if __name__ == '__main__':
     targs       = CLArgs.getArgs()
     if targs['terminal']:
-        main()
+        terminalProgram()
     else:
-        app         = QtGui.QApplication(sys.argv)
-        window      = GUI.MainWindow()
-        window.move((app.desktop()).availableGeometry(window).center() - window.rect().center())
-        window.show()
-        sys.exit(app.exec_())
+        windowProgram()
