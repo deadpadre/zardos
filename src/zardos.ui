@@ -104,7 +104,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="btnEnterrupt">
+         <widget class="QPushButton" name="btnInterrupt">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -157,16 +157,23 @@
      <height>25</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menu">
+   <widget class="QMenu" name="menuFile">
     <property name="title">
      <string>Файл</string>
     </property>
-    <addaction name="zopen"/>
-    <addaction name="zclose"/>
+    <addaction name="openFile"/>
+    <addaction name="closeProgram"/>
    </widget>
-   <addaction name="menu"/>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Настройки</string>
+    </property>
+    <addaction name="openSettings"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuSettings"/>
   </widget>
-  <action name="zopen">
+  <action name="openFile">
    <property name="text">
     <string>Открыть словарь</string>
    </property>
@@ -174,12 +181,17 @@
     <string>Ctrl+O</string>
    </property>
   </action>
-  <action name="zclose">
+  <action name="closeProgram">
    <property name="text">
     <string>Закрыть</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="openSettings">
+   <property name="text">
+    <string>Настройки...</string>
    </property>
   </action>
  </widget>

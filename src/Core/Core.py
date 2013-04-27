@@ -65,3 +65,5 @@ class Quiz:
             return self.quiz[self.currentProceeded - 1]
         except IndexError:
             return Strings.endString;
+    def interrupt(self):
+        self.currentProceeded = self.questionsNumber
