@@ -55,7 +55,7 @@ class Quiz:
         self.currentProceeded = 0
         self.dictionary = Dictionary(srcname).dictionary
         self.quiz = []
-        for i in xrange(self.questionsNumber):
+        for i in xrange(self.questionsNumber): #@UnusedVariable
             self.quiz.append(Question(self.dictionary, random.randint(0, len(self.dictionary) - 1), random.randint(0, 1)))
     def hasQuestions(self):
         return (self.currentProceeded < self.questionsNumber);

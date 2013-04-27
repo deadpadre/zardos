@@ -6,7 +6,7 @@ Created on 08.03.2013
 @author: deadpadre
 '''
 
-from PyQt4 import QtGui
+from PyQt4 import QtGui, QtCore
 import sys
 import ConsoleArguments.ConsoleArguments as CLArgs
 import GUI.GUI as GUI
@@ -29,6 +29,12 @@ def windowProgram():
 
 if __name__ == '__main__':
     targs       = CLArgs.getArgs()
+    reload(sys)
+    sys.setdefaultencoding('utf-8') #@UndefinedVariable
+    print sys.getdefaultencoding()
+    QtCore.QTextCodec.setCodecForCStrings(QtCore.QTextCodec.codecForName("UTF-8"))
+    QtCore.QTextCodec.setCodecForLocale(QtCore.QTextCodec.codecForName("UTF-8"))
+    QtCore.QTextCodec.setCodecForTr(QtCore.QTextCodec.codecForName("UTF-8"))
     if targs['terminal']:
         terminalProgram()
     else:
