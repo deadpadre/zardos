@@ -22,14 +22,14 @@ class QuizWindow(QtGui.QMainWindow, gui_zardos.Ui_MainWindow):
     def prepareQuiz(self, filename):
         self.quiz = Core.Quiz(filename)
         self.currentQuestion = self.quiz.askQuestion()
-        self.totranslate.setText(self.currentQuestion.ask())
+        self.translateLabel.setText(self.currentQuestion.ask())
         self.connect(self.inputLine, QtCore.SIGNAL("returnPressed()"), self.proceedQuestion)
     def proceedQuestion(self):
         answer = self.inputLine.text()
-        self.inputLine.setText('')
-        self.totranslate.setText(self.currentQuestion.check(answer))
+        self.inputLine.selectAll()
+        self.answerLabel.setText(self.currentQuestion.check(answer))
         self.currentQuestion = self.quiz.askQuestion()
-        self.totranslate.setText(self.totranslate.text() + '\n' + self.currentQuestion.ask())
+        self.translateLabel.setText(self.currentQuestion.ask())
     def openFile(self):
         filename = QtGui.QFileDialog.getOpenFileName(self, 'Open file', '/home')
         self.btnEnterrupt.setEnabled(True)

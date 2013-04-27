@@ -60,5 +60,8 @@ class Quiz:
     def hasQuestions(self):
         return (self.currentProceeded < self.questionsNumber);
     def askQuestion(self):
-        self.currentProceeded += 1
-        return self.quiz[self.currentProceeded - 1]
+        try:
+            self.currentProceeded += 1
+            return self.quiz[self.currentProceeded - 1]
+        except IndexError:
+            return Strings.endString;

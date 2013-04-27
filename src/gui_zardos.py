@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'zardos.ui'
 #
-# Created: Fri Mar 15 14:20:34 2013
+# Created: Sat Apr 27 09:21:57 2013
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -59,13 +59,15 @@ class Ui_MainWindow(object):
         self.btnEnterrupt.setObjectName(_fromUtf8("btnEnterrupt"))
         self.horizontalLayout.addWidget(self.btnEnterrupt)
         self.gridLayout.addLayout(self.horizontalLayout, 3, 0, 1, 1)
-        self.totranslate = QtGui.QLabel(self.centralwidget)
-        self.totranslate.setTextFormat(QtCore.Qt.RichText)
-        self.totranslate.setAlignment(QtCore.Qt.AlignCenter)
-        self.totranslate.setObjectName(_fromUtf8("totranslate"))
-        self.gridLayout.addWidget(self.totranslate, 0, 0, 1, 1)
-        spacerItem2 = QtGui.QSpacerItem(50, 60, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
-        self.gridLayout.addItem(spacerItem2, 2, 0, 1, 1)
+        self.translateLabel = QtGui.QLabel(self.centralwidget)
+        self.translateLabel.setTextFormat(QtCore.Qt.RichText)
+        self.translateLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.translateLabel.setObjectName(_fromUtf8("translateLabel"))
+        self.gridLayout.addWidget(self.translateLabel, 0, 0, 1, 1)
+        self.answerLabel = QtGui.QLabel(self.centralwidget)
+        self.answerLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.answerLabel.setObjectName(_fromUtf8("answerLabel"))
+        self.gridLayout.addWidget(self.answerLabel, 2, 0, 1, 1)
         self.gridLayout_4.addLayout(self.gridLayout, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
@@ -89,8 +91,9 @@ class Ui_MainWindow(object):
         self.btnOk.setText(QtGui.QApplication.translate("MainWindow", "ОК", None, QtGui.QApplication.UnicodeUTF8))
         self.btnSkip.setText(QtGui.QApplication.translate("MainWindow", "Пропустить", None, QtGui.QApplication.UnicodeUTF8))
         self.btnEnterrupt.setText(QtGui.QApplication.translate("MainWindow", "Прервать", None, QtGui.QApplication.UnicodeUTF8))
-        self.totranslate.setToolTip(QtGui.QApplication.translate("MainWindow", "Введите перевод в форму ниже.", None, QtGui.QApplication.UnicodeUTF8))
-        self.totranslate.setText(QtGui.QApplication.translate("MainWindow", "Переведите то, что ,здесь написано!", None, QtGui.QApplication.UnicodeUTF8))
+        self.translateLabel.setToolTip(QtGui.QApplication.translate("MainWindow", "Введите перевод в форму ниже.", None, QtGui.QApplication.UnicodeUTF8))
+        self.translateLabel.setText(QtGui.QApplication.translate("MainWindow", "Переведите то, что здесь написано!", None, QtGui.QApplication.UnicodeUTF8))
+        self.answerLabel.setText(QtGui.QApplication.translate("MainWindow", "Здесь будут отображаться правильные ответы.", None, QtGui.QApplication.UnicodeUTF8))
         self.menu.setTitle(QtGui.QApplication.translate("MainWindow", "Файл", None, QtGui.QApplication.UnicodeUTF8))
         self.zopen.setText(QtGui.QApplication.translate("MainWindow", "Открыть словарь", None, QtGui.QApplication.UnicodeUTF8))
         self.zopen.setShortcut(QtGui.QApplication.translate("MainWindow", "Ctrl+O", None, QtGui.QApplication.UnicodeUTF8))
