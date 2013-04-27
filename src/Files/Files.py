@@ -17,12 +17,12 @@ class Defaults:
         self.defaultDict = self.tree.getroot().find('fileSystem/defaultDict').text
         self.defaultPath = self.tree.getroot().find('fileSystem/defaultPath').text
     def setDefaultDict(self, dictName):
-        self.tree.getroot().find('fileSystem/defaultDict').text = dictName
-        self.defaultDict = dictName
+        self.tree.getroot().find('fileSystem/defaultDict').text = str(dictName)
+        self.defaultDict = str(dictName)
         self.saveDefaults()
     def setDefaultPath(self, pathName):
-        self.tree.getroot().find('fileSystem/defaultPath').text = pathName
-        self.defaultPath = pathName
+        self.tree.getroot().find('fileSystem/defaultPath').text = str(pathName)
+        self.defaultPath = str(pathName)
         self.saveDefaults()
     def saveDefaults(self):
         self.tree.write(Strings.settingsFile, "UTF-8") 

@@ -45,6 +45,10 @@ class QuizWindow(QtGui.QMainWindow, gui_zardos.Ui_MainWindow):
     def openDict(self, existedFilename = None):
         if (existedFilename == None):
             filename = QtGui.QFileDialog.getOpenFileName(self, Strings.selectFile, self.defaults.defaultPath)
+            self.defaults.setDefaultDict(filename)
+            self.defaults.setDefaultPath("/".join(str(filename).split('/')[:-1]))
+            print filename
+            print "/".join(str(filename).split('/')[:-1])
         else:
             filename = existedFilename
         self.btnInterrupt.setEnabled(True)
