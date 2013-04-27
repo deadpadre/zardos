@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- encoding: utf-8 -*-
 '''
 Created on 24.03.2013
 
@@ -60,4 +62,3 @@ class Quiz:
     def askQuestion(self):
         self.currentProceeded += 1
         return self.quiz[self.currentProceeded - 1]
-        return 
