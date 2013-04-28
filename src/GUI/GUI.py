@@ -18,11 +18,9 @@ class QuizWindow(QtGui.QMainWindow, gui_zardos.Ui_MainWindow):
         self.setupUi(self)
         self.defaults = Files.Defaults()
         self.connect(self.openFile, QtCore.SIGNAL("triggered()"),  self.openDict)
+        self.connect(self.closeProgram, QtCore.SIGNAL("triggered()"), self.close)
         if (os.path.exists(self.defaults.defaultDict)):
             self.openDict(self.defaults.defaultDict)
-        self.connect(self.inputLine, QtCore.SIGNAL("returnPressed()"), self.proceedQuestion)
-        self.connect(self.btnOk, QtCore.SIGNAL("clicked()"), self.proceedQuestion)
-        self.connect(self.btnInterrupt, QtCore.SIGNAL("clicked()"), self.interruptQuiz)
     def prepareQuiz(self, filename):
         self.quiz = None
         self.quiz = Core.Quiz(filename)
@@ -39,6 +37,7 @@ class QuizWindow(QtGui.QMainWindow, gui_zardos.Ui_MainWindow):
         except AttributeError:
             self.disconnect(self.btnOk, QtCore.SIGNAL("clicked()"), self.proceedQuestion)
             self.disconnect(self.inputLine, QtCore.SIGNAL("returnPressed()"), self.proceedQuestion)
+            self.disconnect(self.btnInterrupt, QtCore.SIGNAL("clicked()"), self.interruptQuiz)
             self.answerLabel.setText(Strings.endString + '\n' + " ".join(str(self.answerLabel.text()).split()[3:]))
     def interruptQuiz(self):
         self.quiz.interrupt()
@@ -54,6 +53,9 @@ class QuizWindow(QtGui.QMainWindow, gui_zardos.Ui_MainWindow):
             print "/".join(str(filename).split('/')[:-1])
         else:
             filename = existedFilename
+        self.connect(self.inputLine, QtCore.SIGNAL("returnPressed()"), self.proceedQuestion)
+        self.connect(self.btnOk, QtCore.SIGNAL("clicked()"), self.proceedQuestion)
+        self.connect(self.btnInterrupt, QtCore.SIGNAL("clicked()"), self.interruptQuiz)
         self.btnInterrupt.setEnabled(True)
         self.btnOk.setEnabled(True)
         self.btnSkip.setEnabled(True)
