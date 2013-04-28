@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Settings</class>
- <widget class="QTabWidget" name="Settings">
+ <class>settings</class>
+ <widget class="QTabWidget" name="settings">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,17 +11,46 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>TabWidget</string>
+   <string>Настройки</string>
   </property>
   <property name="currentIndex">
-   <number>1</number>
+   <number>0</number>
   </property>
-  <widget class="QWidget" name="Regime">
+  <widget class="QWidget" name="translation">
    <attribute name="title">
     <string>Перевод</string>
    </attribute>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>331</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Режим перевода:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="multipleTranslationButton">
+       <property name="contextMenuPolicy">
+        <enum>Qt::DefaultContextMenu</enum>
+       </property>
+       <property name="text">
+        <string>PushButton</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
-  <widget class="QWidget" name="Text">
+  <widget class="QWidget" name="text">
    <attribute name="title">
     <string>Текст</string>
    </attribute>
