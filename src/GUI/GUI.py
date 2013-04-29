@@ -87,7 +87,7 @@ class SettingsWindow(QtGui.QTabWidget, settingsWindow.Ui_settings):
 
 class SettingAction(QtGui.QAction):
     def __init__(self, setting, mapper, parent):
-        QtGui.QAction.__init__(self, setting, parent)
+        QtGui.QAction.__init__(self, setti ng, parent)
         self.connect(self, QtCore.SIGNAL("triggered()"), mapper, QtCore.SLOT("map()"))
         mapper.setMapping(self, setting)
         
