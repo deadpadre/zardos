@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<application>
+    <fileSystem>
+        <defaultPath>/home/deadpadre/Dropbox/АНГЛ</defaultPath>
+        <defaultDict>/home/deadpadre/Dropbox/АНГЛ/dictionary.txt</defaultDict>
+    </fileSystem>
+    <version>0.1</version>
+</application>
