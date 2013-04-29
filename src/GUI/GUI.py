@@ -75,26 +75,28 @@ class SettingsWindow(QtGui.QTabWidget, settingsWindow.Ui_settings):
     def __init__(self, parentWindow = None):
         QtGui.QMainWindow.__init__(self)
         self.setupUi(self)
-        self.mapper = QtCore.QSignalMapper()
         self.parent = parentWindow
         
-        translationAuto     = SettingAction(Strings.modeAuto,   self.mapper, None)
-        translationRusEng   = SettingAction(Strings.modeRusEng, self.mapper, None)
-        translationEngRus   = SettingAction(Strings.modeEngRus, self.mapper, None)
-        translationModeMenu = PopUpMenu(self.multipleTranslationButton, self.setTranslation, [translationAuto, translationRusEng, translationEngRus])
+        translationModeMenu = PopUpMenu(self.setTranslation, self.multipleTranslationButton)
+        translationAuto     = SettingAction(Strings.modeAuto,   translationModeMenu)
+        translationRusEng   = SettingAction(Strings.modeRusEng, translationModeMenu)
+        translationEngRus   = SettingAction(Strings.modeEngRus, translationModeMenu)
+        
+        translationModeMenu.addAction(translationAuto)
+        translationModeMenu.addAction(translationRusEng)
+        translationModeMenu.addAction(translationEngRus)
         
         self.multipleTranslationButton.setMenu(translationModeMenu)
 
 class SettingAction(QtGui.QAction):
-    def __init__(self, setting, mapper, parent):
-        QtGui.QAction.__init__(self, setti ng, parent)
-        self.connect(self, QtCore.SIGNAL("triggered()"), mapper, QtCore.SLOT("map()"))
-        mapper.setMapping(self, setting)
+    def __init__(self, setting, parent):
+        QtGui.QAction.__init__(self, setting, parent)
+        parent.connect(self, QtCore.SIGNAL("triggered()"), parent.mapper, QtCore.SLOT("map()"))
+        parent.mapper.setMapping(self, setting)
         
 class PopUpMenu(QtGui.QMenu):
-    def __init__(self, parentButton, settingFunction, settingActions = None):
+    def __init__(self, settingFunction, parentButton):
         QtGui.QMenu.__init__(self)
         self.mapper = QtCore.QSignalMapper()
+        print "PopUpMenu successfully created."
         parentButton.connect(self.mapper, QtCore.SIGNAL("mapped(const QString &)"), settingFunction)
-        for i in settingActions:
-            self.addAction(i)
