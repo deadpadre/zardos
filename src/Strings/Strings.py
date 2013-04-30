@@ -18,9 +18,9 @@ class Argument:
 description     = 'Тренировка английской лексики.'
 epilog          = 'Спасибо за использование %(prog)s'
 prog            = 'Zardos'
-questions       = Argument(keys = ['--questions', '-q'], typed = int, default = 10, h = 'Количество вопросов, которое задаст программа.')
-auto            = Argument(keys = ['--auto', '-a'], action = 'store_true', default = False, h = 'Выберите этот аргумент для автоматической работы программы: случайной выбор режима для каждого слова, число слов равно двадцати')
-terminal        = Argument(keys = ['--terminal', '-t'], action = 'store_true', default = False, h = 'Выберите этот аргумент для запуска в терминале.')
+questions       = Argument(keys = ['-q', '--questions'],                          default = 10,       h = 'Количество вопросов, которое задаст программа.')
+mode            = Argument(keys = ['-m', '--mode'     ],                          default = False,    h = '0 - Автоматический режим.\n1 - Русско-английский перевод.\n2 - Англо-Русский перевод.')
+terminal        = Argument(keys = ['-t', '--terminal' ], action = 'store_true',   default = False,    h = 'Консольный режим.')
 ranswer         = 'Правильный ответ - '
 yanswer         = 'Ваш ответ - '
 console         = 'terminal'
@@ -32,3 +32,4 @@ defaultAnswer   = 'Здесь будут отображаться правиль
 modeAuto        = 'Авто'
 modeRusEng      = 'Русский -> Английский'
 modeEngRus      = 'Английский -> Русский'
+skippedQuestion  = 'N/A'

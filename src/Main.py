@@ -10,11 +10,20 @@ from PyQt4 import QtGui, QtCore
 import sys
 import ConsoleArguments.ConsoleArguments as CLArgs
 import GUI.GUI as GUI
-#import Strings.Strings as Strings
+import Strings.Strings as Strings
 import Core.Core as Core
 
-def terminalProgram():
-    quiz = Core.Quiz('dictionary.txt')
+def terminalProgram(questions, mode):
+    if (mode == 0):
+        mode = Strings.modeAuto
+    if (mode == 1):
+        mode = Strings.modeRusEng
+    if (mode == 2):
+        mode = Strings.modeEngRus
+    if (questions == -1):
+        quiz = Core.Quiz('dictionary.txt', mode)
+    else:
+        quiz = Core.Quiz('dictionary.txt', mode, questions)
     while (quiz.hasQuestions()):
         currentQuestion = quiz.askQuestion()
         print currentQuestion.ask()
@@ -36,6 +45,6 @@ if __name__ == '__main__':
     QtCore.QTextCodec.setCodecForLocale(QtCore.QTextCodec.codecForName("UTF-8"))
     QtCore.QTextCodec.setCodecForTr(QtCore.QTextCodec.codecForName("UTF-8"))
     if targs['terminal']:
-        terminalProgram()
+        terminalProgram(targs['questions'], targs['mode'])
     else:
         windowProgram()

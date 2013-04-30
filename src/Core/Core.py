@@ -50,12 +50,12 @@ class Question:
         return self.question
 
 class Quiz:
-    def __init__(self, srcname):
-        self.questionsNumber = random.randint(0, MAX_QUESTIONS)
+    def __init__(self, srcname, translationMode = Strings.modeAuto, number = random.randint(0, MAX_QUESTIONS)):
+        self.questionsNumber = number
         self.currentProceeded = 0
         self.dictionary = Dictionary(srcname).dictionary
         self.quiz = []
-        self.mode = Strings.modeAuto
+        self.mode = translationMode
         for i in xrange(self.questionsNumber): #@UnusedVariable
             self.quiz.append(Question(self.dictionary, random.randint(0, len(self.dictionary) - 1), random.randint(0, 1)))
     def hasQuestions(self):
@@ -66,6 +66,8 @@ class Quiz:
             return self.quiz[self.currentProceeded - 1]
         except IndexError:
             return Strings.endString;
+    def skipQuestion(self):
+        self.currentProceeded += 1
     def interrupt(self):
         self.currentProceeded = self.questionsNumber
     def setTranslation(self, translationMode):

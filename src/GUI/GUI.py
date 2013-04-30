@@ -33,21 +33,26 @@ class QuizWindow(QtGui.QMainWindow, gui_zardos.Ui_MainWindow):
         self.currentQuestion = self.quiz.askQuestion()
         self.answerLabel.setText(Strings.defaultAnswer)
         self.translateLabel.setText(self.currentQuestion.ask())
-    def proceedQuestion(self):
+    def proceedQuestion(self, answer = None):
         try:
-            answer = self.inputLine.text()
-            self.inputLine.selectAll()
+            if (answer == None):
+                answer = self.inputLine.text()
+                self.inputLine.selectAll()
             self.answerLabel.setText(self.currentQuestion.check(answer))
             self.currentQuestion = self.quiz.askQuestion()
             self.translateLabel.setText(self.currentQuestion.ask())
         except AttributeError:
-            self.disconnect(self.btnOk, QtCore.SIGNAL("clicked()"), self.proceedQuestion)
-            self.disconnect(self.inputLine, QtCore.SIGNAL("returnPressed()"), self.proceedQuestion)
-            self.disconnect(self.btnInterrupt, QtCore.SIGNAL("clicked()"), self.interruptQuiz)
+            self.disconnect(self.btnOk,         QtCore.SIGNAL("clicked()"),         self.proceedQuestion)
+            self.disconnect(self.inputLine,     QtCore.SIGNAL("returnPressed()"),   self.proceedQuestion)
+            self.disconnect(self.btnInterrupt,  QtCore.SIGNAL("clicked()"),         self.interruptQuiz)
+            self.disconnect(self.btnSkip,       QtCore.SIGNAL("clicked()"),         self.skipQuestion)
             self.answerLabel.setText(Strings.endString + '\n' + " ".join(str(self.answerLabel.text()).split()[3:]))
     def interruptQuiz(self):
         self.quiz.interrupt()
         self.proceedQuestion()
+    def skipQuestion(self):
+        self.quiz.skipQuestion()
+        self.proceedQuestion(Strings.skippedQuestion)
     def openDict(self, existedFilename = None):
         if (existedFilename == None):
             filename = QtGui.QFileDialog.getOpenFileName(self, Strings.selectFile, self.defaults.defaultPath)
@@ -59,9 +64,10 @@ class QuizWindow(QtGui.QMainWindow, gui_zardos.Ui_MainWindow):
             print "/".join(str(filename).split('/')[:-1])
         else:
             filename = existedFilename
-        self.connect(self.inputLine, QtCore.SIGNAL("returnPressed()"), self.proceedQuestion)
-        self.connect(self.btnOk, QtCore.SIGNAL("clicked()"), self.proceedQuestion)
-        self.connect(self.btnInterrupt, QtCore.SIGNAL("clicked()"), self.interruptQuiz)
+        self.connect(self.inputLine,    QtCore.SIGNAL("returnPressed()"),   self.proceedQuestion)
+        self.connect(self.btnOk,        QtCore.SIGNAL("clicked()"),         self.proceedQuestion)
+        self.connect(self.btnInterrupt, QtCore.SIGNAL("clicked()"),         self.interruptQuiz)
+        self.connect(self.btnSkip,      QtCore.SIGNAL("clicked()"),         self.skipQuestion)
         self.btnInterrupt.setEnabled(True)
         self.btnOk.setEnabled(True)
         self.btnSkip.setEnabled(True)
