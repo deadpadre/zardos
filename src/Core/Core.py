@@ -50,14 +50,23 @@ class Question:
         return self.question
 
 class Quiz:
-    def __init__(self, srcname, translationMode = Strings.modeAuto, number = random.randint(0, MAX_QUESTIONS)):
+    def __init__(self, srcname, translationMode = Strings.modeAuto, number = None):
+        if (number == None):
+            number = random.randint(0, MAX_QUESTIONS)
         self.questionsNumber = number
         self.currentProceeded = 0
+        self.mode = translationMode
         self.dictionary = Dictionary(srcname).dictionary
         self.quiz = []
-        self.mode = translationMode
         for i in xrange(self.questionsNumber): #@UnusedVariable
-            self.quiz.append(Question(self.dictionary, random.randint(0, len(self.dictionary) - 1), random.randint(0, 1)))
+            val = 0
+            if self.mode == Strings.modeAuto:
+                val = random.randint(0, 1)
+            if self.mode == Strings.modeRusEng:
+                val = 1
+            if self.mode == Strings.modeEngRus:
+                val = 0
+            self.quiz.append(Question(self.dictionary, random.randint(0, len(self.dictionary) - 1), val))
     def hasQuestions(self):
         return (self.currentProceeded < self.questionsNumber);
     def askQuestion(self):

@@ -29,7 +29,7 @@ class QuizWindow(QtGui.QMainWindow, gui_zardos.Ui_MainWindow):
         self.settingsWindow.show()
     def prepareQuiz(self, filename):
         self.quiz = None
-        self.quiz = Core.Quiz(filename)
+        self.quiz = Core.Quiz(filename, self.defaults.defaultMode)
         self.currentQuestion = self.quiz.askQuestion()
         self.answerLabel.setText(Strings.defaultAnswer)
         self.translateLabel.setText(self.currentQuestion.ask())
@@ -49,7 +49,7 @@ class QuizWindow(QtGui.QMainWindow, gui_zardos.Ui_MainWindow):
             self.answerLabel.setText(Strings.endString + '\n' + " ".join(str(self.answerLabel.text()).split()[3:]))
     def interruptQuiz(self):
         self.quiz.interrupt()
-        self.proceedQuestion()
+        self.proceedQuestion('')
     def skipQuestion(self):
         self.quiz.skipQuestion()
         self.proceedQuestion(Strings.skippedQuestion)
@@ -78,6 +78,7 @@ class SettingsWindow(QtGui.QTabWidget, settingsWindow.Ui_settings):
         print translationMode
         self.parent.quiz.setTranslation(translationMode)
         self.multipleTranslationButton.setText(translationMode)
+        self.parent.defaults.setDefaultMode(translationMode)
     def __init__(self, parentWindow = None):
         QtGui.QMainWindow.__init__(self)
         self.setupUi(self)
@@ -93,6 +94,7 @@ class SettingsWindow(QtGui.QTabWidget, settingsWindow.Ui_settings):
         translationModeMenu.addAction(translationEngRus)
         
         self.multipleTranslationButton.setMenu(translationModeMenu)
+        self.multipleTranslationButton.setText(self.parent.defaults.defaultMode)
 
 class SettingAction(QtGui.QAction):
     def __init__(self, setting, parent):

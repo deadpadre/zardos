@@ -14,15 +14,20 @@ import Strings.Strings as Strings
 class Defaults:
     def __init__(self):
         self.tree = ET.parse(Strings.settingsFile)
-        self.defaultDict = self.tree.getroot().find('fileSystem/defaultDict').text
-        self.defaultPath = self.tree.getroot().find('fileSystem/defaultPath').text
+        self.defaultDict = self.tree.getroot().find('fileSettings/defaultDict').text
+        self.defaultPath = self.tree.getroot().find('fileSettings/defaultPath').text
+        self.defaultMode = self.tree.getroot().find('quizSettings/defaultMode').text
     def setDefaultDict(self, dictName):
-        self.tree.getroot().find('fileSystem/defaultDict').text = str(dictName)
+        self.tree.getroot().find('fileSettings/defaultDict').text = str(dictName)
         self.defaultDict = str(dictName)
         self.saveDefaults()
     def setDefaultPath(self, pathName):
-        self.tree.getroot().find('fileSystem/defaultPath').text = str(pathName)
+        self.tree.getroot().find('fileSettings/defaultPath').text = str(pathName)
         self.defaultPath = str(pathName)
+        self.saveDefaults()
+    def setDefaultMode(self, modeName):
+        self.tree.getroot().find('quizSettings/defaultMode').text = str(modeName)
+        self.defaultMode = str(modeName)
         self.saveDefaults()
     def saveDefaults(self):
         self.tree.write(Strings.settingsFile, "UTF-8") 

@@ -32,4 +32,4 @@ defaultAnswer   = 'Здесь будут отображаться правиль
 modeAuto        = 'Авто'
 modeRusEng      = 'Русский -> Английский'
 modeEngRus      = 'Английский -> Русский'
-skippedQuestion  = 'N/A'
+skippedQuestion = 'N/A'

@@ -1,8 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <application>
-    <fileSystem>
+    <fileSettings>
         <defaultPath>/home/deadpadre/workspace/Zardos</defaultPath>
         <defaultDict>/home/deadpadre/workspace/Zardos/dictionary.txt</defaultDict>
-    </fileSystem>
+    </fileSettings>
+    <quizSettings>
+        <defaultMode>Английский -&gt; Русский</defaultMode>
+    </quizSettings>
     <version>0.1</version>
 </application>
