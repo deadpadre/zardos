@@ -5,7 +5,8 @@
         <defaultDict>/home/deadpadre/workspace/Zardos/dictionary.txt</defaultDict>
     </fileSettings>
     <quizSettings>
-        <defaultMode>Русский -&gt; Английский</defaultMode>
+        <defaultMode>Английский -&gt; Русский</defaultMode>
+        <defaultQuestionNumber>0</defaultQuestionNumber>
     </quizSettings>
     <version>0.1</version>
 </application>

@@ -78,12 +78,21 @@ class SettingsWindow(QtGui.QTabWidget, settingsNew.Ui_settings):
         filename = QtGui.QFileDialog.getOpenFileName(self, Strings.selectFile, self.parent.defaults.defaultPath)
         if filename == u'':
             return
-        print 'HELLO FUCKERS IM IN DA FUNC'
         self.dictionaryCurrentLabel.setText(filename)
+        self.parent.defaults.setDefaultPath("/".join(str(filename).split('/')[:-1]))
+        self.parent.defaults.saveDefaults()
+    def saveSettings(self):
+        print 'IM INDA FUNC BITCHES'
+        self.parent.defaults.setDefaultDict(self.dictionaryCurrentLabel.text())
+        self.parent.defaults.setDefaultQuestionNumber(self.questionNumberBox.value())
+        self.parent.defaults.setDefaultMode(self.parent.defaults.indexModeMapper[self.modeBox.currentIndex()])
+        self.parent.defaults.saveDefaults()
     def __init__(self, parentWindow = None):
         QtGui.QMainWindow.__init__(self)
         self.setupUi(self)
         self.parent = parentWindow
         self.dictionaryCurrentLabel.setText(self.parent.defaults.defaultDict)
         self.modeBox.setCurrentIndex(self.parent.defaults.defaultModeIndex)
+        self.questionNumberBox.setValue(self.parent.defaults.defaultQuestionNumber)
         self.connect(self.dictionaryChooseButton, QtCore.SIGNAL("clicked()"), self.chooseDictionary)
+        self.connect(self.usualButtonBox.button(QtGui.QDialogButtonBox.Apply), QtCore.SIGNAL("clicked()"), self.saveSettings)

@@ -17,24 +17,22 @@ class Defaults:
         self.defaultDict = self.tree.getroot().find('fileSettings/defaultDict').text
         self.defaultPath = self.tree.getroot().find('fileSettings/defaultPath').text
         self.defaultMode = self.tree.getroot().find('quizSettings/defaultMode').text
-        self.defaultModeIndex = -1
-        if (self.defaultMode == Strings.modeAuto):
-            self.defaultModeIndex = 0
-        if (self.defaultMode == Strings.modeRusEng):
-            self.defaultModeIndex = 1
-        if (self.defaultMode == Strings.modeEngRus):
-            self.defaultModeIndex = 2
+        self.defaultQuestionNumber  = int(self.tree.getroot().find('quizSettings/defaultQuestionNumber').text)
+        self.modeIndexMapper = {Strings.modeAuto: 0, Strings.modeRusEng: 1, Strings.modeEngRus: 2}
+        self.indexModeMapper = {0: Strings.modeAuto, 1: Strings.modeRusEng, 2: Strings.modeEngRus}
+        self.defaultModeIndex = self.modeIndexMapper[self.defaultMode]
     def setDefaultDict(self, dictName):
         self.tree.getroot().find('fileSettings/defaultDict').text = str(dictName)
         self.defaultDict = str(dictName)
-        self.saveDefaults()
     def setDefaultPath(self, pathName):
         self.tree.getroot().find('fileSettings/defaultPath').text = str(pathName)
         self.defaultPath = str(pathName)
-        self.saveDefaults()
     def setDefaultMode(self, modeName):
         self.tree.getroot().find('quizSettings/defaultMode').text = str(modeName)
-        self.defaultMode = str(modeName)
-        self.saveDefaults()
+        self.defaultMode = unicode(modeName)
+        self.defaultModeIndex = self.modeIndexMapper[self.defaultMode]
+    def setDefaultQuestionNumber(self, number):
+        self.tree.getroot().find('quizSettings/defaultQuestionNumber').text = str(number)
+        self.defaultQuestionNumber = number
     def saveDefaults(self):
         self.tree.write(Strings.settingsFile, "UTF-8") 

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'settingsNew.ui'
 #
-# Created: Thu May  2 00:43:05 2013
+# Created: Thu May  2 01:15:13 2013
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -70,6 +70,13 @@ class Ui_settings(object):
         self.questionNumberBox.setObjectName(_fromUtf8("questionNumberBox"))
         self.horizontalLayout_4.addWidget(self.questionNumberBox)
         self.verticalLayout.addLayout(self.horizontalLayout_4)
+        self.questionNumberWarningLabel = QtGui.QLabel(self.verticalLayoutWidget)
+        font = QtGui.QFont()
+        font.setPointSize(9)
+        self.questionNumberWarningLabel.setFont(font)
+        self.questionNumberWarningLabel.setAlignment(QtCore.Qt.AlignHCenter|QtCore.Qt.AlignTop)
+        self.questionNumberWarningLabel.setObjectName(_fromUtf8("questionNumberWarningLabel"))
+        self.verticalLayout.addWidget(self.questionNumberWarningLabel)
         settings.addTab(self.translation, _fromUtf8(""))
         self.text = QtGui.QWidget()
         self.text.setObjectName(_fromUtf8("text"))
@@ -89,6 +96,7 @@ class Ui_settings(object):
         self.dictionaryCurrentLabel.setText(QtGui.QApplication.translate("settings", "TextLabel", None, QtGui.QApplication.UnicodeUTF8))
         self.dictionaryChooseButton.setText(QtGui.QApplication.translate("settings", "Обзор...", None, QtGui.QApplication.UnicodeUTF8))
         self.questionNumberTipLabel.setText(QtGui.QApplication.translate("settings", "Число вопросов:", None, QtGui.QApplication.UnicodeUTF8))
+        self.questionNumberWarningLabel.setText(QtGui.QApplication.translate("settings", "Выберите 0 для случайного числа вопросов.", None, QtGui.QApplication.UnicodeUTF8))
         settings.setTabText(settings.indexOf(self.translation), QtGui.QApplication.translate("settings", "Перевод", None, QtGui.QApplication.UnicodeUTF8))
         settings.setTabText(settings.indexOf(self.text), QtGui.QApplication.translate("settings", "Текст", None, QtGui.QApplication.UnicodeUTF8))
 

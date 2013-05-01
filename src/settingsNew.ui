@@ -124,12 +124,23 @@
        </item>
       </layout>
      </item>
+     <item>
+      <widget class="QLabel" name="questionNumberWarningLabel">
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Выберите 0 для случайного числа вопросов.</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignHCenter|Qt::AlignTop</set>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
-   <zorder>label_2</zorder>
-   <zorder>verticalLayoutWidget</zorder>
-   <zorder>usualButtonBox</zorder>
-   <zorder>verticalLayoutWidget</zorder>
   </widget>
   <widget class="QWidget" name="text">
    <attribute name="title">

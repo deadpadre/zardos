@@ -15,21 +15,21 @@ class Argument:
         self.typed      = typed
         
 
-description     = 'Тренировка английской лексики.'
-epilog          = 'Спасибо за использование %(prog)s'
-prog            = 'Zardos'
-questions       = Argument(keys = ['-q', '--questions'],                          default = 10,       h = 'Количество вопросов, которое задаст программа.')
-mode            = Argument(keys = ['-m', '--mode'     ],                          default = False,    h = '0 - Автоматический режим.\n1 - Русско-английский перевод.\n2 - Англо-Русский перевод.')
-terminal        = Argument(keys = ['-t', '--terminal' ], action = 'store_true',   default = False,    h = 'Консольный режим.')
-ranswer         = 'Правильный ответ - '
-yanswer         = 'Ваш ответ - '
-console         = 'terminal'
-window          = 'window'
-endString       = 'Вопросы кончились.'
-selectFile      = 'Выберите файл'
-settingsFile    = 'Files/settings.xml'
-defaultAnswer   = 'Здесь будут отображаться правильные ответы.'
-modeAuto        = 'Авто'
-modeRusEng      = 'Русский -> Английский'
-modeEngRus      = 'Английский -> Русский'
-skippedQuestion = 'N/A'
+description     = u'Тренировка английской лексики.'
+epilog          = u'Спасибо за использование %(prog)s'
+prog            = u'Zardos'
+questions       = Argument(keys = [u'-q', u'--questions'],                          default = 10,       h = u'Количество вопросов, которое задаст программа.')
+mode            = Argument(keys = [u'-m', u'--mode'     ],                          default = False,    h = u'0 - Автоматический режим.\n1 - Русско-английский перевод.\n2 - Англо-Русский перевод.')
+terminal        = Argument(keys = [u'-t', u'--terminal' ], action = u'store_true',   default = False,    h = u'Консольный режим.')
+ranswer         = u'Правильный ответ - '
+yanswer         = u'Ваш ответ - '
+console         = u'terminal'
+window          = u'window'
+endString       = u'Вопросы кончились.'
+selectFile      = u'Выберите файл'
+settingsFile    = u'Files/settings.xml'
+defaultAnswer   = u'Здесь будут отображаться правильные ответы.'
+modeAuto        = u'Авто'
+modeRusEng      = u'Русский -> Английский'
+modeEngRus      = u'Английский -> Русский'
+skippedQuestion = u'N/A'
