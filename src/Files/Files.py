@@ -17,6 +17,13 @@ class Defaults:
         self.defaultDict = self.tree.getroot().find('fileSettings/defaultDict').text
         self.defaultPath = self.tree.getroot().find('fileSettings/defaultPath').text
         self.defaultMode = self.tree.getroot().find('quizSettings/defaultMode').text
+        self.defaultModeIndex = -1
+        if (self.defaultMode == Strings.modeAuto):
+            self.defaultModeIndex = 0
+        if (self.defaultMode == Strings.modeRusEng):
+            self.defaultModeIndex = 1
+        if (self.defaultMode == Strings.modeEngRus):
+            self.defaultModeIndex = 2
     def setDefaultDict(self, dictName):
         self.tree.getroot().find('fileSettings/defaultDict').text = str(dictName)
         self.defaultDict = str(dictName)

@@ -11,7 +11,7 @@ import Core.Core as Core
 import Strings.Strings as Strings
 import os.path
 import Files.Files as Files
-import settingsWindow
+import settingsNew
 
 class QuizWindow(QtGui.QMainWindow, gui_zardos.Ui_MainWindow):
     def __init__(self, parent = None):
@@ -73,35 +73,17 @@ class QuizWindow(QtGui.QMainWindow, gui_zardos.Ui_MainWindow):
         self.btnSkip.setEnabled(True)
         self.prepareQuiz(filename)
 
-class SettingsWindow(QtGui.QTabWidget, settingsWindow.Ui_settings):
-    def setTranslation(self, translationMode):
-        print translationMode
-        self.parent.quiz.setTranslation(translationMode)
-        self.multipleTranslationButton.setText(translationMode)
-        self.parent.defaults.setDefaultMode(translationMode)
+class SettingsWindow(QtGui.QTabWidget, settingsNew.Ui_settings):
+    def chooseDictionary(self):
+        filename = QtGui.QFileDialog.getOpenFileName(self, Strings.selectFile, self.parent.defaults.defaultPath)
+        if filename == u'':
+            return
+        print 'HELLO FUCKERS IM IN DA FUNC'
+        self.dictionaryCurrentLabel.setText(filename)
     def __init__(self, parentWindow = None):
         QtGui.QMainWindow.__init__(self)
         self.setupUi(self)
         self.parent = parentWindow
-        
-        translationModeMenu = PopUpMenu(self.setTranslation, self.multipleTranslationButton)
-        
-        translationModeMenu.addAction(SettingAction(Strings.modeAuto,   translationModeMenu))
-        translationModeMenu.addAction(SettingAction(Strings.modeRusEng, translationModeMenu))
-        translationModeMenu.addAction(SettingAction(Strings.modeEngRus, translationModeMenu))
-        
-        self.multipleTranslationButton.setMenu(translationModeMenu)
-        self.multipleTranslationButton.setText(self.parent.defaults.defaultMode)
-
-class SettingAction(QtGui.QAction):
-    def __init__(self, setting, parent):
-        QtGui.QAction.__init__(self, setting, parent)
-        parent.connect(self, QtCore.SIGNAL("triggered()"), parent.mapper, QtCore.SLOT("map()"))
-        parent.mapper.setMapping(self, setting)
-        
-class PopUpMenu(QtGui.QMenu):
-    def __init__(self, settingFunction, parentButton):
-        QtGui.QMenu.__init__(self)
-        self.mapper = QtCore.QSignalMapper()
-        print "PopUpMenu successfully created."
-        parentButton.connect(self.mapper, QtCore.SIGNAL("mapped(const QString &)"), settingFunction)
+        self.dictionaryCurrentLabel.setText(self.parent.defaults.defaultDict)
+        self.modeBox.setCurrentIndex(self.parent.defaults.defaultModeIndex)
+        self.connect(self.dictionaryChooseButton, QtCore.SIGNAL("clicked()"), self.chooseDictionary)
