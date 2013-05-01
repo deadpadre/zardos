@@ -85,13 +85,10 @@ class SettingsWindow(QtGui.QTabWidget, settingsWindow.Ui_settings):
         self.parent = parentWindow
         
         translationModeMenu = PopUpMenu(self.setTranslation, self.multipleTranslationButton)
-        translationAuto     = SettingAction(Strings.modeAuto,   translationModeMenu)
-        translationRusEng   = SettingAction(Strings.modeRusEng, translationModeMenu)
-        translationEngRus   = SettingAction(Strings.modeEngRus, translationModeMenu)
         
-        translationModeMenu.addAction(translationAuto)
-        translationModeMenu.addAction(translationRusEng)
-        translationModeMenu.addAction(translationEngRus)
+        translationModeMenu.addAction(SettingAction(Strings.modeAuto,   translationModeMenu))
+        translationModeMenu.addAction(SettingAction(Strings.modeRusEng, translationModeMenu))
+        translationModeMenu.addAction(SettingAction(Strings.modeEngRus, translationModeMenu))
         
         self.multipleTranslationButton.setMenu(translationModeMenu)
         self.multipleTranslationButton.setText(self.parent.defaults.defaultMode)
