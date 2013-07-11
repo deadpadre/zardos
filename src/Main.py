@@ -27,7 +27,7 @@ if __name__ == '__main__':
     targs       = CLArgs.getArgs()
     reload(sys)
     sys.setdefaultencoding('utf-8') #@UndefinedVariable
-    print sys.getdefaultencoding()
+    #print sys.getdefaultencoding()
     QtCore.QTextCodec.setCodecForCStrings(QtCore.QTextCodec.codecForName("UTF-8"))
     QtCore.QTextCodec.setCodecForLocale(QtCore.QTextCodec.codecForName("UTF-8"))
     QtCore.QTextCodec.setCodecForTr(QtCore.QTextCodec.codecForName("UTF-8"))
