@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'zardos.ui'
 #
-# Created: Sat Apr 27 14:03:15 2013
+# Created: Thu Jul 18 16:31:44 2013
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -77,6 +77,8 @@ class Ui_MainWindow(object):
         self.menuFile.setObjectName(_fromUtf8("menuFile"))
         self.menuSettings = QtGui.QMenu(self.menubar)
         self.menuSettings.setObjectName(_fromUtf8("menuSettings"))
+        self.menuEdit = QtGui.QMenu(self.menubar)
+        self.menuEdit.setObjectName(_fromUtf8("menuEdit"))
         MainWindow.setMenuBar(self.menubar)
         self.openFile = QtGui.QAction(MainWindow)
         self.openFile.setObjectName(_fromUtf8("openFile"))
@@ -84,11 +86,15 @@ class Ui_MainWindow(object):
         self.closeProgram.setObjectName(_fromUtf8("closeProgram"))
         self.openSettings = QtGui.QAction(MainWindow)
         self.openSettings.setObjectName(_fromUtf8("openSettings"))
+        self.openDictionaryEdit = QtGui.QAction(MainWindow)
+        self.openDictionaryEdit.setObjectName(_fromUtf8("openDictionaryEdit"))
         self.menuFile.addAction(self.openFile)
         self.menuFile.addAction(self.closeProgram)
         self.menuSettings.addAction(self.openSettings)
+        self.menuEdit.addAction(self.openDictionaryEdit)
         self.menubar.addAction(self.menuFile.menuAction())
         self.menubar.addAction(self.menuSettings.menuAction())
+        self.menubar.addAction(self.menuEdit.menuAction())
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -102,9 +108,11 @@ class Ui_MainWindow(object):
         self.answerLabel.setText(QtGui.QApplication.translate("MainWindow", "Здесь будут отображаться правильные ответы.", None, QtGui.QApplication.UnicodeUTF8))
         self.menuFile.setTitle(QtGui.QApplication.translate("MainWindow", "Файл", None, QtGui.QApplication.UnicodeUTF8))
         self.menuSettings.setTitle(QtGui.QApplication.translate("MainWindow", "Настройки", None, QtGui.QApplication.UnicodeUTF8))
+        self.menuEdit.setTitle(QtGui.QApplication.translate("MainWindow", "Правка", None, QtGui.QApplication.UnicodeUTF8))
         self.openFile.setText(QtGui.QApplication.translate("MainWindow", "Открыть словарь", None, QtGui.QApplication.UnicodeUTF8))
         self.openFile.setShortcut(QtGui.QApplication.translate("MainWindow", "Ctrl+O", None, QtGui.QApplication.UnicodeUTF8))
         self.closeProgram.setText(QtGui.QApplication.translate("MainWindow", "Закрыть", None, QtGui.QApplication.UnicodeUTF8))
         self.closeProgram.setShortcut(QtGui.QApplication.translate("MainWindow", "Ctrl+W", None, QtGui.QApplication.UnicodeUTF8))
         self.openSettings.setText(QtGui.QApplication.translate("MainWindow", "Настройки...", None, QtGui.QApplication.UnicodeUTF8))
+        self.openDictionaryEdit.setText(QtGui.QApplication.translate("MainWindow", "Словарь...", None, QtGui.QApplication.UnicodeUTF8))
 

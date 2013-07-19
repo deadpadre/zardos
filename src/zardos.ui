@@ -170,8 +170,15 @@
     </property>
     <addaction name="openSettings"/>
    </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Правка</string>
+    </property>
+    <addaction name="openDictionaryEdit"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuSettings"/>
+   <addaction name="menuEdit"/>
   </widget>
   <action name="openFile">
    <property name="text">
@@ -192,6 +199,11 @@
   <action name="openSettings">
    <property name="text">
     <string>Настройки...</string>
+   </property>
+  </action>
+  <action name="openDictionaryEdit">
+   <property name="text">
+    <string>Словарь...</string>
    </property>
   </action>
  </widget>

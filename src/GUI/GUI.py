@@ -12,6 +12,7 @@ import Strings.Strings as Strings
 import os.path
 import Files.Files as Files
 import settingsNew
+import editDictionaryWindow
 
 class QuizWindow(QtGui.QMainWindow, gui_zardos.Ui_MainWindow):
     def __init__(self, parent = None):
@@ -19,11 +20,16 @@ class QuizWindow(QtGui.QMainWindow, gui_zardos.Ui_MainWindow):
         self.setupUi(self)
         self.defaults = Files.Defaults()
         self.settingsWindow = None
+        self.editDictionaryWindow = None
         self.connect(self.openFile,     QtCore.SIGNAL("triggered()"), self.openDict)
         self.connect(self.closeProgram, QtCore.SIGNAL("triggered()"), self.close)
         self.connect(self.openSettings, QtCore.SIGNAL("triggered()"), self.reviewSettings)
+        self.connect(self.openDictionaryEdit, QtCore.SIGNAL("triggered()"), self.reviewEditDictionaryWindow)
         if (os.path.exists(self.defaults.defaultDict)):
             self.openDict(self.defaults.defaultDict)
+    def reviewEditDictionaryWindow(self):
+        self.editDictionaryWindow = EditDictionaryWindow(self)
+        self.editDictionaryWindow.show()
     def reviewSettings(self):
         self.settingsWindow = SettingsWindow(self)
         self.settingsWindow.show()
@@ -91,8 +97,24 @@ class SettingsWindow(QtGui.QTabWidget, settingsNew.Ui_settings):
         QtGui.QMainWindow.__init__(self)
         self.setupUi(self)
         self.parent = parentWindow
-        self.dictionaryCurrentLabel.setText(self.parent.defaults.defaultDict)
-        self.modeBox.setCurrentIndex(self.parent.defaults.defaultModeIndex)
-        self.questionNumberBox.setValue(self.parent.defaults.defaultQuestionNumber)
+        self.dictionaryCurrentLabel.setText(self.parent.defaults.getDefaultDict())
+        self.modeBox.setCurrentIndex(self.parent.defaults.getDefaultModeIndex())
+        self.questionNumberBox.setValue(self.parent.defaults.getDefaultQuestionNumber())
         self.connect(self.dictionaryChooseButton, QtCore.SIGNAL("clicked()"), self.chooseDictionary)
         self.connect(self.usualButtonBox.button(QtGui.QDialogButtonBox.Apply), QtCore.SIGNAL("clicked()"), self.saveSettings)
+
+class EditDictionaryWindow(QtGui.QWidget, editDictionaryWindow.Ui_editDictionaryWindow):
+    def __init__(self, parentWindow = None):
+        QtGui.QWidget.__init__(self)
+        self.setupUi(self)
+        self.parent = parentWindow
+        self.dictionaryFile = Files.DictionaryFile(self.parent.defaults.getDefaultDict())
+        words = self.dictionaryFile.tree.getroot().findall('word')
+        for i in xrange(len(words)):
+            self.tableWidget.insertRow(i)
+            self.tableWidget.setItem(i, 0, QtGui.QTableWidgetItem(words[i].find('eng').text))
+            self.tableWidget.setItem(i, 1, QtGui.QTableWidgetItem(words[i].find('rus').text))
+    def accept(self):
+        pass
+    def reject(self):
+        pass
