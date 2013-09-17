@@ -93,6 +93,9 @@ class SettingsWindow(QtGui.QTabWidget, settingsNew.Ui_settings):
         self.parent.defaults.setDefaultQuestionNumber(self.questionNumberBox.value())
         self.parent.defaults.setDefaultMode(self.parent.defaults.indexModeMapper[self.modeBox.currentIndex()])
         self.parent.defaults.saveDefaults()
+    def saveAndGo(self):
+        self.saveSettings()
+        self.close()
     def __init__(self, parentWindow = None):
         QtGui.QMainWindow.__init__(self)
         self.setupUi(self)
@@ -102,6 +105,7 @@ class SettingsWindow(QtGui.QTabWidget, settingsNew.Ui_settings):
         self.questionNumberBox.setValue(self.parent.defaults.getDefaultQuestionNumber())
         self.connect(self.dictionaryChooseButton, QtCore.SIGNAL("clicked()"), self.chooseDictionary)
         self.connect(self.usualButtonBox.button(QtGui.QDialogButtonBox.Apply), QtCore.SIGNAL("clicked()"), self.saveSettings)
+        self.connect(self.usualButtonBox.button(QtGui.QDialogButtonBox.Ok), QtCore.SIGNAL("clicked()"), self.saveAndGo)
 
 class EditDictionaryWindow(QtGui.QWidget, editDictionaryWindow.Ui_editDictionaryWindow):
     def __init__(self, parentWindow = None):
