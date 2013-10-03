@@ -107,11 +107,16 @@ class SettingsWindow(QtGui.QTabWidget, settingsNew.Ui_settings):
         self.connect(self.usualButtonBox.button(QtGui.QDialogButtonBox.Ok), QtCore.SIGNAL("clicked()"), self.saveAndGo)
 
 class EditDictionaryWindow(QtGui.QWidget, editDictionaryWindow.Ui_editDictionaryWindow):
+    firstOpened = True;
     def __init__(self, parentWindow = None):
         QtGui.QWidget.__init__(self)
         self.setupUi(self)
         self.parent = parentWindow
-        self.dictionaryFile = Files.DictionaryFile(self.parent.defaults.getDefaultDict())
+        if not EditDictionaryWindow.firstOpened:
+            self.dictionaryFile = Files.DictionaryFile(Strings.dictionaryFile, True)
+        else:
+            self.dictionaryFile = Files.DictionaryFile(self.parent.defaults.getDefaultDict())
+        EditDictionaryWindow.firstOpened = False
         words = self.dictionaryFile.tree.getroot()
         for i in xrange(len(words)):
             self.tableWidget.insertRow(i)

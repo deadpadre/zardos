@@ -50,10 +50,13 @@ class Defaults:
         self.tree.write(Strings.settingsFile, "UTF-8")
 
 class DictionaryFile:
-    def __init__(self, filename):
-        if 'dictionary.xml' in os.listdir('Files'):
+    def __init__(self, filename, fromXML=False):
+        if fromXML and ('dictionary.xml' in os.listdir('Files')):
             self.tree = ET.parse(Strings.dictionaryFile)
         else:
+            if (fromXML):
+                print "XMLDictionaryException: will try to build a new correct one."
+            os.remove(Strings.dictionaryFile)
             dictionary = Core.Dictionary(filename)
             os.mknod(Strings.dictionaryFile)
             temp = open(Strings.dictionaryFile, 'w')
