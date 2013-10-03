@@ -88,7 +88,6 @@ class SettingsWindow(QtGui.QTabWidget, settingsNew.Ui_settings):
         self.parent.defaults.setDefaultPath("/".join(str(filename).split('/')[:-1]))
         self.parent.defaults.saveDefaults()
     def saveSettings(self):
-        print 'IM INDA FUNC BITCHES'
         self.parent.defaults.setDefaultDict(self.dictionaryCurrentLabel.text())
         self.parent.defaults.setDefaultQuestionNumber(self.questionNumberBox.value())
         self.parent.defaults.setDefaultMode(self.parent.defaults.indexModeMapper[self.modeBox.currentIndex()])
@@ -113,12 +112,17 @@ class EditDictionaryWindow(QtGui.QWidget, editDictionaryWindow.Ui_editDictionary
         self.setupUi(self)
         self.parent = parentWindow
         self.dictionaryFile = Files.DictionaryFile(self.parent.defaults.getDefaultDict())
-        words = self.dictionaryFile.tree.getroot().findall('word')
+        words = self.dictionaryFile.tree.getroot()
         for i in xrange(len(words)):
             self.tableWidget.insertRow(i)
-            self.tableWidget.setItem(i, 0, QtGui.QTableWidgetItem(words[i].find('eng').text))
-            self.tableWidget.setItem(i, 1, QtGui.QTableWidgetItem(words[i].find('rus').text))
+            self.tableWidget.setItem(i, 0, QtGui.QTableWidgetItem(str(words[i][0].text)))
+            self.tableWidget.setItem(i, 1, QtGui.QTableWidgetItem(str(words[i][1].text)))
     def accept(self):
-        pass
+        for i in xrange(self.tableWidget.rowCount()):
+            (self.dictionaryFile.tree.getroot().findall('word')[i]).find('eng').text = str(self.tableWidget.item(i, 0).text())
+            (self.dictionaryFile.tree.getroot().findall('word')[i]).find('rus').text = str(self.tableWidget.item(i, 1).text())
+            #print (self.dictionaryFile.tree.getroot().findall('word')[i]).find('rus').text
+        self.dictionaryFile.saveChanges()
+        self.close()
     def reject(self):
-        pass
+        self.close()

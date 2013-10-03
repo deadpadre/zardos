@@ -51,19 +51,22 @@ class Defaults:
 
 class DictionaryFile:
     def __init__(self, filename):
-        dictionary = Core.Dictionary(filename)
         if 'dictionary.xml' in os.listdir('Files'):
-            os.remove('Files/dictionary.xml')
-        os.mknod(Strings.dictionaryFile)
-        temp = open(Strings.dictionaryFile, 'w')
-        temp.write('<dictionary></dictionary>')
-        temp.close()
-        self.tree = ET.parse(Strings.dictionaryFile)
-        for i in xrange(len(dictionary.dictionary)):
-            temp = ET.Element('word')
-            temp.append(ET.Element('eng'))
-            temp.append(ET.Element('rus'))
-            temp.find('eng').text = dictionary.dictionary[i][0]
-            temp.find('rus').text = dictionary.dictionary[i][1]
-            self.tree.getroot().append(temp)
+            self.tree = ET.parse(Strings.dictionaryFile)
+        else:
+            dictionary = Core.Dictionary(filename)
+            os.mknod(Strings.dictionaryFile)
+            temp = open(Strings.dictionaryFile, 'w')
+            temp.write('<dictionary></dictionary>')
+            temp.close()
+            self.tree = ET.parse(Strings.dictionaryFile)
+            for i in xrange(len(dictionary.dictionary)):
+                temp = ET.Element('word')
+                temp.append(ET.Element('eng'))
+                temp.append(ET.Element('rus'))
+                temp.find('eng').text = dictionary.dictionary[i][0]
+                temp.find('rus').text = dictionary.dictionary[i][1]
+                self.tree.getroot().append(temp)
+            self.tree.write(Strings.dictionaryFile, "UTF-8")
+    def saveChanges(self):
         self.tree.write(Strings.dictionaryFile, "UTF-8")
