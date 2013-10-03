@@ -64,12 +64,22 @@ class DictionaryFile:
             temp.close()
             self.tree = ET.parse(Strings.dictionaryFile)
             for i in xrange(len(dictionary.dictionary)):
-                temp = ET.Element('word')
-                temp.append(ET.Element('eng'))
-                temp.append(ET.Element('rus'))
-                temp.find('eng').text = dictionary.dictionary[i][0]
-                temp.find('rus').text = dictionary.dictionary[i][1]
-                self.tree.getroot().append(temp)
+                self.addNewWord(dictionary.dictionary[i])
             self.tree.write(Strings.dictionaryFile, "UTF-8")
+    def saveToTXT(self, filename):
+        words = self.tree.getroot()
+        temp = open(filename, 'w')
+        for i in words:
+            temp.write(i[0].text + ' ' + i[1].text + '\n')
+        temp.close()
+    def saveToXML(self, filename):
+        self.tree.write(filename, "UTF-8")
     def saveChanges(self):
-        self.tree.write(Strings.dictionaryFile, "UTF-8")
+        self.saveToXML(Strings.dictionaryFile)
+    def addNewWord(self, word):
+        temp = ET.Element('word')
+        temp.append(ET.Element('eng'))
+        temp.append(ET.Element('rus'))
+        temp.find('eng').text = word[0]#dictionary.dictionary[i][0]
+        temp.find('rus').text = word[1]#dictionary.dictionary[i][1]
+        self.tree.getroot().append(temp)

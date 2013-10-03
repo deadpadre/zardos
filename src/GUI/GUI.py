@@ -61,6 +61,7 @@ class QuizWindow(QtGui.QMainWindow, gui_zardos.Ui_MainWindow):
         self.proceedQuestion(Strings.skippedQuestion)
     def openDict(self, existedFilename = None):
         if (existedFilename == None):
+            EditDictionaryWindow.firstOpened = True
             filename = QtGui.QFileDialog.getOpenFileName(self, Strings.selectFile, self.defaults.defaultPath)
             if (filename == u''):
                 return
@@ -84,6 +85,7 @@ class SettingsWindow(QtGui.QTabWidget, settingsNew.Ui_settings):
         filename = QtGui.QFileDialog.getOpenFileName(self, Strings.selectFile, self.parent.defaults.defaultPath)
         if filename == u'':
             return
+        EditDictionaryWindow.firstOpened = True
         self.dictionaryCurrentLabel.setText(filename)
         self.parent.defaults.setDefaultPath("/".join(str(filename).split('/')[:-1]))
         self.parent.defaults.saveDefaults()
@@ -112,6 +114,7 @@ class EditDictionaryWindow(QtGui.QWidget, editDictionaryWindow.Ui_editDictionary
         QtGui.QWidget.__init__(self)
         self.setupUi(self)
         self.parent = parentWindow
+        self.connect(self.addNewWordButton, QtCore.SIGNAL("clicked()"), self.addNewWord)
         if not EditDictionaryWindow.firstOpened:
             self.dictionaryFile = Files.DictionaryFile(Strings.dictionaryFile, True)
         else:
@@ -124,10 +127,17 @@ class EditDictionaryWindow(QtGui.QWidget, editDictionaryWindow.Ui_editDictionary
             self.tableWidget.setItem(i, 1, QtGui.QTableWidgetItem(str(words[i][1].text)))
     def accept(self):
         for i in xrange(self.tableWidget.rowCount()):
-            (self.dictionaryFile.tree.getroot().findall('word')[i]).find('eng').text = str(self.tableWidget.item(i, 0).text())
-            (self.dictionaryFile.tree.getroot().findall('word')[i]).find('rus').text = str(self.tableWidget.item(i, 1).text())
+            try:
+                (self.dictionaryFile.tree.getroot().findall('word')[i]).find('eng').text = str(self.tableWidget.item(i, 0).text())
+                (self.dictionaryFile.tree.getroot().findall('word')[i]).find('rus').text = str(self.tableWidget.item(i, 1).text())
+            except IndexError:
+                self.dictionaryFile.addNewWord([str(self.tableWidget.item(i, 0).text()), str(self.tableWidget.item(i, 1).text())])
             #print (self.dictionaryFile.tree.getroot().findall('word')[i]).find('rus').text
         self.dictionaryFile.saveChanges()
+        #self.dictionaryFile.saveToTXT(self.parent.defaults.getDefaultDict())
         self.close()
     def reject(self):
         self.close()
+    def addNewWord(self):
+        self.tableWidget.insertRow(self.tableWidget.rowCount())
+        self.tableWidget.setCurrentCell(self.tableWidget.rowCount() - 1, 0)

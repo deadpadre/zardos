@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'editDictionaryWindow.ui'
 #
-# Created: Thu Jul 18 17:09:06 2013
+# Created: Thu Oct  3 10:00:48 2013
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -34,6 +34,14 @@ class Ui_editDictionaryWindow(object):
         self.tableWidget.horizontalHeader().setCascadingSectionResizes(False)
         self.tableWidget.horizontalHeader().setStretchLastSection(True)
         self.tableWidget.verticalHeader().setStretchLastSection(False)
+        self.addNewWordButton = QtGui.QPushButton(editDictionaryWindow)
+        self.addNewWordButton.setGeometry(QtCore.QRect(380, 40, 71, 31))
+        font = QtGui.QFont()
+        font.setPointSize(20)
+        font.setBold(True)
+        font.setWeight(75)
+        self.addNewWordButton.setFont(font)
+        self.addNewWordButton.setObjectName(_fromUtf8("addNewWordButton"))
 
         self.retranslateUi(editDictionaryWindow)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), editDictionaryWindow.accept)
@@ -43,4 +51,5 @@ class Ui_editDictionaryWindow(object):
     def retranslateUi(self, editDictionaryWindow):
         editDictionaryWindow.setWindowTitle(QtGui.QApplication.translate("editDictionaryWindow", "Dialog", None, QtGui.QApplication.UnicodeUTF8))
         self.searchLine.setText(QtGui.QApplication.translate("editDictionaryWindow", "Поиск слов...", None, QtGui.QApplication.UnicodeUTF8))
+        self.addNewWordButton.setText(QtGui.QApplication.translate("editDictionaryWindow", "+", None, QtGui.QApplication.UnicodeUTF8))
 
