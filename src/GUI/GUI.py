@@ -134,7 +134,7 @@ class EditDictionaryWindow(QtGui.QWidget, editDictionaryWindow.Ui_editDictionary
                 self.dictionaryFile.addNewWord([str(self.tableWidget.item(i, 0).text()), str(self.tableWidget.item(i, 1).text())])
             #print (self.dictionaryFile.tree.getroot().findall('word')[i]).find('rus').text
         self.dictionaryFile.saveChanges()
-        #self.dictionaryFile.saveToTXT(self.parent.defaults.getDefaultDict())
+        self.dictionaryFile.saveToTXT(self.parent.defaults.getDefaultDict())
         self.close()
     def reject(self):
         self.close()
